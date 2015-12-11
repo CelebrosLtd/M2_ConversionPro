@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="conversionpro_add_external_js" />
+    <update handle="conversionpro_remove_sidebars" />
+
+    <body>
+        <remove name="search.result" />
+
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="conversionpro.search.result" template="Celebros_ConversionPro::search/result.phtml" />
+        </referenceContainer>
+    </body>
+</page>
