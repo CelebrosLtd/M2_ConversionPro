@@ -1,23 +1,35 @@
 <?php
+/**
+ * Celebros
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish correct extension functionality.
+ * If you wish to customize it, please contact Celebros.
+ *
+ ******************************************************************************
+ * @category    Celebros
+ * @package     Celebros_ConversionPro
+ */
 namespace Celebros\ConversionPro\Model\Config\Source;
 
 class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * @var \Magento\Catalog\Model\Resource\Category\Collection
+     * @var \Magento\Catalog\Model\ResourceModel\Category\Collection
      */
     protected $categoryCollection;
-
+    
     /**
      * @var array
      */
     protected $options;
-
-    public function __construct(\Magento\Catalog\Model\Resource\Category\Collection $categoryCollection)
+    
+    public function __construct(\Magento\Catalog\Model\ResourceModel\Category\Collection $categoryCollection)
     {
         $this->categoryCollection = $categoryCollection;
     }
-
+    
     public function toOptionArray($isMultiselect = false)
     {
         $options = $this->_toOptionArray();
@@ -25,7 +37,7 @@ class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
             array_unshift($options, ['value' => '', 'label' => __('--Please Select--')]);
         return $options;
     }
-
+    
     protected function _toOptionArray()
     {
         if (is_null($this->options)) {
@@ -39,4 +51,5 @@ class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
         }
         return $this->options;
     }
+    
 }
