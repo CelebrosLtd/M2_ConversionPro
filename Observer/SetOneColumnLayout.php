@@ -11,9 +11,11 @@
  * @category    Celebros
  * @package     Celebros_ConversionPro
  */
-namespace Celebros\ConversionPro\Controller\Plugin;
+namespace Celebros\ConversionPro\Observer;
 
-class OneColumnLayout
+use Magento\Framework\Event\ObserverInterface;
+
+class SetOneColumnLayout implements ObserverInterface
 {
     /**
      * @var \Magento\Framework\App\Action\Context
@@ -33,17 +35,19 @@ class OneColumnLayout
         $this->helper = $helper;
     }
     
-    public function afterExecute($controller, $result)
+    public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        if ($result instanceof \Magento\Framework\View\Result\Page
-            && $this->helper->isEnabledOnFrontend()
-            && $this->helper->getNavToSearch())
-        {
-            $categoryId = $this->context->getRequest()->getParam('id');
-            if (!$this->helper->isCategoryIdBlacklisted($categoryId))
-                $result->getConfig()->setPageLayout('1column');
-        }
-        return $result;
+        if (!$this->helper->isEnabledOnFrontend())
+            return;
+        
+        $view = $this->context->getView();
+        $page = $view->getPage();
+        
+        $layoutUpdate = $page->getLayout()->getUpdate();
+        $layoutUpdate->addHandle('conversionpro_catalogsearch_result_index');
+        
+        $page->getConfig()->setPageLayout('1column');
+        
     }
     
 }
