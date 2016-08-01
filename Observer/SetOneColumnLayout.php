@@ -29,16 +29,17 @@ class SetOneColumnLayout implements ObserverInterface
     
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Celebros\ConversionPro\Helper\Data $helper)
-    {
+        \Celebros\ConversionPro\Helper\Data $helper
+    ) {
         $this->context = $context;
         $this->helper = $helper;
     }
     
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        if (!$this->helper->isEnabledOnFrontend())
+        if (!$this->helper->isEnabledOnFrontend()) {
             return;
+        }
         
         $view = $this->context->getView();
         $page = $view->getPage();

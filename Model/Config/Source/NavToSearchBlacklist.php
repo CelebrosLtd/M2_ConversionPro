@@ -33,15 +33,17 @@ class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray($isMultiselect = false)
     {
         $options = $this->_toOptionArray();
-        if (!$isMultiselect)
+        if (!$isMultiselect) {
             array_unshift($options, ['value' => '', 'label' => __('--Please Select--')]);
+        }
+        
         return $options;
     }
     
     protected function _toOptionArray()
     {
-        if (is_null($this->options)) {
-            $this->options = array();
+        if (null === $this->options) {
+            $this->options = [];
             $this->categoryCollection->addAttributeToSelect('name');
             $this->categoryCollection->setOrder('name');
             foreach ($this->categoryCollection as $category)

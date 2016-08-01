@@ -27,8 +27,8 @@ class OneColumnLayout
     
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Celebros\ConversionPro\Helper\Data $helper)
-    {
+        \Celebros\ConversionPro\Helper\Data $helper
+    ) {
         $this->context = $context;
         $this->helper = $helper;
     }
@@ -36,13 +36,14 @@ class OneColumnLayout
     public function afterExecute($controller, $result)
     {
         if ($result instanceof \Magento\Framework\View\Result\Page
-            && $this->helper->isEnabledOnFrontend()
-            && $this->helper->getNavToSearch())
-        {
+        && $this->helper->isEnabledOnFrontend()
+        && $this->helper->getNavToSearch()) {
             $categoryId = $this->context->getRequest()->getParam('id');
-            if (!$this->helper->isCategoryIdBlacklisted($categoryId))
+            if (!$this->helper->isCategoryIdBlacklisted($categoryId)) {
                 $result->getConfig()->setPageLayout('1column');
+            }
         }
+        
         return $result;
     }
     
