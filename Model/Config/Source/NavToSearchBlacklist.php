@@ -18,12 +18,12 @@ class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
     /**
      * @var \Magento\Catalog\Model\ResourceModel\Category\Collection
      */
-    protected $categoryCollection;
+    public $categoryCollection;
     
     /**
      * @var array
      */
-    protected $options;
+    public $options;
     
     public function __construct(\Magento\Catalog\Model\ResourceModel\Category\Collection $categoryCollection)
     {
@@ -32,12 +32,12 @@ class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
     
     public function toOptionArray($isMultiselect = false)
     {
-        $options = $this->_toOptionArray();
+        $result = $this->_toOptionArray();
         if (!$isMultiselect) {
-            array_unshift($options, ['value' => '', 'label' => __('--Please Select--')]);
+            array_unshift($result, ['value' => '', 'label' => __('--Please Select--')]);
         }
         
-        return $options;
+        return $result;
     }
     
     protected function _toOptionArray()
@@ -51,6 +51,7 @@ class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
                     'value' => $category->getId(),
                     'label' => $category->getName()];
         }
+        
         return $this->options;
     }
     

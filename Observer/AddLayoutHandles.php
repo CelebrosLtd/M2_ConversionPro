@@ -20,12 +20,12 @@ class AddLayoutHandles implements ObserverInterface
     /**
      * @var \Magento\Framework\App\Action\Context
      */
-    protected $context;
+    public $context;
     
     /**
      * @var \Celebros\ConversionPro\Helper\Data
      */
-    protected $helper;
+    public $helper;
     
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
