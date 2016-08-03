@@ -15,19 +15,42 @@ namespace Celebros\ConversionPro\Model\Config\Source;
 
 class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
 {
+    const CAT_RECURSION_LEVEL = 20;
+    
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Category\Collection
+     * @var \Magento\Framework\App\RequestInterface
      */
-    public $categoryCollection;
+    public $request;
+    
+    /**
+     * @var \Magento\Catalog\Api\CategoryRepositoryInterface
+     */
+    public $category;
+    
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    public $storeManager;
     
     /**
      * @var array
      */
     public $options;
     
-    public function __construct(\Magento\Catalog\Model\ResourceModel\Category\Collection $categoryCollection)
-    {
-        $this->categoryCollection = $categoryCollection;
+    
+    /**
+     * @var \Magento\Catalog\Model\CategoryFactory
+     */
+    public $categoryFactory;
+    
+    public function __construct(
+        \Magento\Framework\App\RequestInterface $request,
+        \Magento\Catalog\Model\CategoryFactory $category,
+        \Magento\Store\Model\StoreManagerInterface $storeManager
+    ) {
+        $this->request = $request;
+        $this->category = $category;
+        $this->storeManager = $storeManager;
     }
     
     public function toOptionArray($isMultiselect = false)
@@ -44,15 +67,36 @@ class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
     {
         if (null === $this->options) {
             $this->options = [];
-            $this->categoryCollection->addAttributeToSelect('name');
-            $this->categoryCollection->setOrder('name');
-            foreach ($this->categoryCollection as $category) {
+            $storeId = $this->request->getParam('store', null);
+            $store = $this->storeManager->getStore($storeId);
+            foreach ($this->getStoreCategories($store) as $category) {
                 $this->options[] = [
                     'value' => $category->getId(),
-                    'label' => $category->getName()];
+                    'label' => $category->getName(),
+                    'style' => 'padding-left: ' . $this->calculatePadding($category->getLevel()) . 'px;'
+                ];
             }
         }
         
         return $this->options;
+    }
+    
+    public function calculatePadding($level)
+    {
+        return (int)(($level - 2 ) * 10);
+    }
+    
+    public function getStoreCategories($store)
+    {
+        $category = $this->category->create();
+        $storeCategories = $category->getCategories(
+            $store->getRootCategoryId(),
+            self::CAT_RECURSION_LEVEL,
+            'path',
+            true,
+            true
+        );
+        
+        return $storeCategories;
     }
 }
