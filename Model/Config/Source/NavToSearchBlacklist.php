@@ -46,13 +46,13 @@ class NavToSearchBlacklist implements \Magento\Framework\Option\ArrayInterface
             $this->options = [];
             $this->categoryCollection->addAttributeToSelect('name');
             $this->categoryCollection->setOrder('name');
-            foreach ($this->categoryCollection as $category)
+            foreach ($this->categoryCollection as $category) {
                 $this->options[] = [
                     'value' => $category->getId(),
                     'label' => $category->getName()];
+            }
         }
         
         return $this->options;
     }
-    
 }

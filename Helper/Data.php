@@ -125,7 +125,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return $this->scopeConfig->isSetFlag(
             self::XML_PATH_NAV_TO_SEARCH_ENABLE_BLACKLIST,
-            ScopeInterface::SCOPE_STORE, $store
+            ScopeInterface::SCOPE_STORE,
+            $store
         );
     }
     
@@ -171,5 +172,4 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return 'jquery.1.7.Celebros.min.js';
     }
-    
 }

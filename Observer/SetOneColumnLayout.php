@@ -48,7 +48,5 @@ class SetOneColumnLayout implements ObserverInterface
         $layoutUpdate->addHandle('conversionpro_catalogsearch_result_index');
         
         $page->getConfig()->setPageLayout('1column');
-        
     }
-    
 }

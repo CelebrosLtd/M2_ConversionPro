@@ -62,5 +62,4 @@ class AddLayoutHandles implements ObserverInterface
                 break;
         }
     }
-    
 }
