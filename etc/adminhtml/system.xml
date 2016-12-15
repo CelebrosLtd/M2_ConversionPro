@@ -53,6 +53,14 @@
                         <field id="*/*/enabled">1</field>
                     </depends>
                 </field>
+                <field id="scriptslocation" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Scripts Location</label>
+                    <source_model>Celebros\ConversionPro\Model\Config\Source\DomLocations</source_model>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                        <field id="*/*/addscripts">1</field>
+                    </depends>
+                </field>
                 <field id="hidecontent" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="1">
                     <label>Hide Content</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>

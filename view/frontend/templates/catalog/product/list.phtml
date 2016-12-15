@@ -1,4 +1,9 @@
 <?php $helper = $this->helper('Celebros\ConversionPro\Helper\Data') ?>
+<?php if ($helper->getAddScripts() && $helper->getScriptsLocation() == 'body'): ?>
+  <?php foreach ($helper->getExternalJsUrls() as $url) : ?>
+<script type="text/javascript" src="<?php echo $block->escapeJsQuote($url) ?>"></script>
+  <?php endforeach ?>
+<?php endif ?>
 <?php if ($helper->getAddDiv()) : ?>
-<div id="<?php echo $block->escapeHtml($this->helper('Celebros\ConversionPro\Helper\Data')->getProductListContainerId()) ?>"></div>
+<div id="<?php echo $block->escapeHtml($helper->getProductListContainerId()) ?>"></div>
 <?php endif ?>

@@ -19,6 +19,7 @@
                 <host>uitemplatev3.celebros.com</host>
                 <adddiv>1</adddiv>
                 <addscripts>1</addscripts>
+                <scriptslocation>head</scriptslocation>
                 <hidecontent>1</hidecontent>
             </general_settings>
 

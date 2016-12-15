@@ -22,6 +22,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_SITE_KEY = 'conversionpro/general_settings/sitekey';
     const XML_PATH_ADD_DIV = 'conversionpro/general_settings/adddiv';
     const XML_PATH_ADD_SCRIPTS = 'conversionpro/general_settings/addscripts';
+    const XML_PATH_SCRIPTS_LOCATION = 'conversionpro/general_settings/scriptslocation';
     const XML_PATH_HIDE_CONTENT = 'conversionpro/general_settings/hidecontent';
     const XML_PATH_NAV_TO_SEARCH = 'conversionpro/nav_to_search_settings/nav_to_search';
     const XML_PATH_NAV_TO_SEARCH_ENABLE_BLACKLIST = 'conversionpro/nav_to_search_settings/nav_to_search_enable_blacklist';
@@ -98,6 +99,15 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return $this->scopeConfig->isSetFlag(
             self::XML_PATH_ADD_SCRIPTS,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+    
+    public function getScriptsLocation($store = null)
+    {
+        return $this->scopeConfig->getValue(
+            self::XML_PATH_SCRIPTS_LOCATION,
             ScopeInterface::SCOPE_STORE,
             $store
         );
