@@ -7,3 +7,5 @@ Celebros ConversionPro Include
 1.0.1 - adapted to Magento 2.0.2
 
 1.0.2 - 1.0.4 - technical fixes
+
+1.0.5 - loading scripts via requirejs added

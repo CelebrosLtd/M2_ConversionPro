@@ -1,8 +1,11 @@
 <?php $helper = $this->helper('Celebros\ConversionPro\Helper\Data') ?>
 <?php if ($helper->getAddScripts() && $helper->getScriptsLocation() == 'body'): ?>
-  <?php foreach ($helper->getExternalJsUrls() as $url) : ?>
-<script type="text/javascript" src="<?php echo $block->escapeJsQuote($url) ?>"></script>
-  <?php endforeach ?>
+<?php $scripts = $helper->getExternalJsUrls(); ?>
+<script type="text/javascript">
+    require(["jquery", "<?php echo $scripts[1] ?>"], function(){
+		UITClientConfigMaster.Initlize();
+    });
+</script> 
 <?php endif ?>
 <?php if ($helper->getAddDiv()) : ?>
 <div id="<?php echo $block->escapeHtml($helper->getProductListContainerId()) ?>"></div>

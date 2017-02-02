@@ -35,7 +35,7 @@ class DomLocations implements \Magento\Framework\Option\ArrayInterface
      */
     public $options = [
         'head' => 'Head',
-        'body' => 'Body'
+        'body' => 'Body (RequireJS)'
     ];
     
     

@@ -19,14 +19,12 @@
                 <host>uitemplatev3.celebros.com</host>
                 <adddiv>1</adddiv>
                 <addscripts>1</addscripts>
-                <scriptslocation>head</scriptslocation>
+                <scriptslocation>body</scriptslocation>
                 <hidecontent>1</hidecontent>
             </general_settings>
-
             <nav_to_search_settings>
                 <nav_to_search>1</nav_to_search>
             </nav_to_search_settings>
-
             <advanced>
                 <scripts_path>uitemplate/Scripts</scripts_path>
                 <client_config_path>uitemplate/Clients</client_config_path>
