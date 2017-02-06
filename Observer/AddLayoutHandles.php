@@ -43,10 +43,15 @@ class AddLayoutHandles implements ObserverInterface
         
         $layoutUpdate = $observer->getEvent()->getLayout()->getUpdate();
         $fullActionName = $observer->getEvent()->getFullActionName();
-        
+        $view = $this->context->getView();
+        $page = $view->getPage();
         switch ($fullActionName) {
             case 'catalogsearch_result_index':
                 $layoutUpdate->addHandle('conversionpro_catalogsearch_result_index');
+                if ($this->helper->getHideContent()) {
+                    $layoutUpdate->addHandle('conversionpro_catalog_category_view_hide_content');
+                }
+                $page->getConfig()->setPageLayout('1column');
                 break;
             
             case 'catalog_category_view':
@@ -57,6 +62,7 @@ class AddLayoutHandles implements ObserverInterface
                         if ($this->helper->getHideContent()) {
                             $layoutUpdate->addHandle('conversionpro_catalog_category_view_hide_content');
                         }
+                        $page->getConfig()->setPageLayout('1column');
                     }
                 }
                 break;
