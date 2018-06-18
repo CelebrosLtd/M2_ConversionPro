@@ -89,17 +89,48 @@
             </group>
             <group id="advanced" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
                 <label>Advanced</label>
-                <field id="scripts_path" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+                <field id="js_framework" translate="label comment" type="select" sortOrder="05" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>JS Framework</label>
+                    <source_model>Celebros\ConversionPro\Model\Config\Source\JSFramework</source_model>
+                </field>
+                <!--<field id="scripts_path" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
                     <label>Script Path</label>
                     <comment><![CDATA[e.g. uitemplate/Scripts]]></comment>
-                </field>
+                </field>-->
                 <field id="client_config_path" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
                     <label>Client Config Script Path</label>
                     <comment><![CDATA[e.g. uitemplate/Clients]]></comment>
+                    <depends>
+                        <field id="*/*/js_framework">jquery</field>
+                    </depends>                    
                 </field>
                 <field id="client_config_js_filename" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
                     <label>Client Config File Name</label>
                     <comment><![CDATA[e.g. ClientConfig.min.js]]></comment>
+                    <depends>
+                        <field id="*/*/js_framework">jquery</field>
+                    </depends> 
+                </field>
+                <field id="angular_client_config_path" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Client Config Script Path</label>
+                    <comment><![CDATA[e.g. UITemplateV6/Clients]]></comment>
+                    <depends>
+                        <field id="*/*/js_framework">angular</field>
+                    </depends> 
+                </field>
+                <field id="angular_client_config_js_filename" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>Client Config File Name</label>
+                    <comment><![CDATA[e.g. CelScripts.js]]></comment>
+                    <depends>
+                        <field id="*/*/js_framework">angular</field>
+                    </depends> 
+                </field>
+            </group>
+            <group id="about" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1">
+                <label>About</label>
+                <hide_in_single_store_mode>0</hide_in_single_store_mode>
+                <field id="info" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <frontend_model>Celebros\ConversionPro\Block\System\Config\Form\Field\Info</frontend_model>
                 </field>
             </group>
         </section>

@@ -29,6 +29,9 @@
                 <scripts_path>uitemplate/Scripts</scripts_path>
                 <client_config_path>uitemplate/Clients</client_config_path>
                 <client_config_js_filename>ClientConfig.js</client_config_js_filename>
+                <angular_client_config_path>UITemplateV6/Clients</angular_client_config_path>
+                <angular_client_config_js_filename>CelScripts.js</angular_client_config_js_filename>
+                <js_framework>jquery</js_framework>
             </advanced>
         </conversionpro>
     </default>

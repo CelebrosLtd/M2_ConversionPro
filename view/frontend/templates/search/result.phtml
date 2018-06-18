@@ -1,12 +1,23 @@
 <?php $helper = $this->helper('Celebros\ConversionPro\Helper\Data') ?>
 <?php if ($helper->getAddScripts() && $helper->getScriptsLocation() == 'body'): ?>
+<?php if ($helper->isAngular()): ?>
+<?php $scripts = $helper->getAngularScriptsArray(); ?>
+<script type="text/javascript">
+    require(["<?php echo $scripts[0] ?>"], function(){
+        require(["<?php echo $scripts[1] ?>", "<?php echo $scripts[2] ?>"], function(){
+            //UITClientConfigMaster.Initlize();
+        });
+    });
+</script> 
+<?php else: ?>
 <?php $scripts = $helper->getExternalJsUrls(); ?>
 <script type="text/javascript">
     require(["jquery", "<?php echo $scripts[1] ?>"], function(){
 		UITClientConfigMaster.Initlize();
     });
 </script> 
+<?php endif; ?>
 <?php endif ?>
 <?php if ($helper->getAddDiv()) : ?>
-<div id="<?php echo $block->escapeHtml($helper->getProductListContainerId()) ?>"></div>
+<div id="<?php echo $block->escapeHtml($helper->getProductListContainerId()) ?>"><?php if ($helper->isAngular()): ?><div ng-view></div><?php endif; ?></div>
 <?php endif ?>

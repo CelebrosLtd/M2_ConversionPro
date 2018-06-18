@@ -11,3 +11,5 @@ Celebros ConversionPro Include
 1.0.5 - loading scripts via requirejs added
 
 1.0.6 - technical fix
+
+1.1.0 - Angular JS added

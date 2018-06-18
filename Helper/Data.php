@@ -30,6 +30,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_SCRIPT_PATH = 'conversionpro/advanced/scripts_path';
     const XML_PATH_CLIENT_CONFIG_PATH = 'conversionpro/advanced/client_config_path';
     const XML_PATH_CLIENT_CONFIG_FILENAME = 'conversionpro/advanced/client_config_js_filename';
+    const XML_PATH_JS_FRAMEWORK = 'conversionpro/advanced/js_framework';
+    
+    const ANGULAR_SETTING_PREFIX = 'angular_';
     
     const PRODUCT_LIST_CONTAINER_ID = 'celUITDiv';
     
@@ -44,14 +47,38 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return self::PRODUCT_LIST_CONTAINER_ID;
     }
     
+    public function isAngular($store = null)
+    {
+        $value = $this->scopeConfig->getValue(
+            self::XML_PATH_JS_FRAMEWORK,
+            ScopeInterface::SCOPE_STORE,
+            $store);
+            
+        return ($value == 'angular') ? true : false;
+    }
+    
     public function getExternalJsUrls()
     {
         $protocol = $this->_getRequest()->isSecure() ? 'https' : 'http';
-        $jqueryUrl = $protocol . '://'
-            . implode('/', [$this->getHost(), $this->getScriptPath(), $this->getJqueryFilename()]);
+        /*$jqueryUrl = $protocol . '://'
+            . implode('/', [$this->getHost(), $this->getScriptPath(), $this->getJqueryFilename()]);*/
+        $jqueryUrl = 'jquery';
         $clientConfigUrl = $protocol . '://'
             . implode('/', [$this->getHost(), $this->getClientConfigPath(), $this->getSiteKey(), 'output', $this->getClientConfigFilename()]);
         return [$jqueryUrl, $clientConfigUrl];
+    }
+    
+    public function getAngularScriptsArray()
+    {
+        $protocol = $this->_getRequest()->isSecure() ? 'https' : 'http';
+        $angular = $protocol . '://'
+            . 'ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js';
+        $angularRoute = $protocol . '://'    
+            . 'ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.min.js';
+        $clientConfigUrl = $protocol . '://'
+            . implode('/', [$this->getHost(), $this->getClientConfigPath(), $this->getSiteKey(), 'output', $this->getClientConfigFilename()]);
+            /*. 'uitemplatev3stag.celebros.com/UITemplateAngular/Clients/Demo2/output/CelScripts.js';*/
+        return [$angular, $angularRoute, $clientConfigUrl];
     }
     
     public function isEnabledOnFrontend($store = null)
@@ -162,8 +189,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     
     public function getClientConfigPath($store = null)
     {
+        $path = $this->_prepXmlPath(self::XML_PATH_CLIENT_CONFIG_PATH, $store);
         return $this->scopeConfig->getValue(
-            self::XML_PATH_CLIENT_CONFIG_PATH,
+            $path,
             ScopeInterface::SCOPE_STORE,
             $store
         );
@@ -171,11 +199,23 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     
     public function getClientConfigFilename($store = null)
     {
+        $path = $this->_prepXmlPath(self::XML_PATH_CLIENT_CONFIG_FILENAME, $store);
         return $this->scopeConfig->getValue(
-            self::XML_PATH_CLIENT_CONFIG_FILENAME,
+            $path,
             ScopeInterface::SCOPE_STORE,
             $store
         );
+    }
+    
+    protected function _prepXmlPath($path, $store = null)
+    {
+        if ($this->isAngular($store)) {
+            $path = explode('/', $path);
+            $path[2] = self::ANGULAR_SETTING_PREFIX . $path[2];
+            $path = implode('/', $path);
+        }
+
+        return $path;
     }
     
     public function getJqueryFilename()
