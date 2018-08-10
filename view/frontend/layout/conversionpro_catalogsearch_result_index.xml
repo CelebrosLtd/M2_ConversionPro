@@ -17,7 +17,7 @@
     <body>
         <referenceBlock name="search.result" remove="true" />
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template" name="conversionpro.search.result" template="Celebros_ConversionPro::search/result.phtml" />
+            <block class="Celebros\ConversionPro\Block\Search" name="conversionpro.search.result" template="Celebros_ConversionPro::search/result.phtml" />
         </referenceContainer>
     </body>
 </page>
