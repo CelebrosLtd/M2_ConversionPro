@@ -15,3 +15,5 @@ Celebros ConversionPro Include
 1.1.0 - Angular JS added
 
 1.1.1 - search page title fixed
+
+1.1.2 - php require version changed
