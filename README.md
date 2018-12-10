@@ -17,3 +17,5 @@ Celebros ConversionPro Include
 1.1.1 - search page title fixed
 
 1.1.2 - php require version changed
+
+1.1.3 - tech fix

@@ -15,6 +15,7 @@
     <update handle="conversionpro_add_external_js" />
     <update handle="conversionpro_remove_sidebars" />
     <body>
+        <referenceBlock name="catalogsearch.leftnav" remove="true"/>
         <referenceBlock name="search.result" remove="true" />
         <referenceContainer name="content">
             <block class="Celebros\ConversionPro\Block\Search" name="conversionpro.search.result" template="Celebros_ConversionPro::search/result.phtml" />

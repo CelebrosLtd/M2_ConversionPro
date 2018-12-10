@@ -15,6 +15,7 @@
     <update handle="conversionpro_add_external_js" />
     <update handle="conversionpro_remove_sidebars" />
     <body>
+        <referenceBlock name="catalog.leftnav" remove="true"/>
         <referenceBlock name="category.products.list" remove="true" />
         <referenceContainer name="content">
             <block class="Magento\Framework\View\Element\Template" name="conversionpro.search.result" template="Celebros_ConversionPro::catalog/product/list.phtml" />
