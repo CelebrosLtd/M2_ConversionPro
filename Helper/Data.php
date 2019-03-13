@@ -222,4 +222,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return 'jquery.1.7.Celebros.min.js';
     }
+    
+    public function getBaseUrl()
+    {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+        return $storeManager->getStore()->getBaseUrl();
+    }
 }

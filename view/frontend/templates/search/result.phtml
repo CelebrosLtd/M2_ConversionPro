@@ -3,6 +3,7 @@
 <?php if ($helper->isAngular()): ?>
 <?php $scripts = $helper->getAngularScriptsArray(); ?>
 <script type="text/javascript">
+    var CEL_BASE_URL = '<?php echo $helper->getBaseUrl(); ?>';
     require(["<?php echo $scripts[0] ?>"], function(){
         require(["<?php echo $scripts[1] ?>", "<?php echo $scripts[2] ?>"], function(){
             //UITClientConfigMaster.Initlize();
@@ -12,6 +13,7 @@
 <?php else: ?>
 <?php $scripts = $helper->getExternalJsUrls(); ?>
 <script type="text/javascript">
+    var CEL_BASE_URL = '<?php echo $helper->getBaseUrl(); ?>';
     require(["jquery", "<?php echo $scripts[1] ?>"], function(){
 		UITClientConfigMaster.Initlize();
     });
