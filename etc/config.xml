@@ -17,7 +17,7 @@
             <general_settings>
                 <enabled>1</enabled>
                 <host>uistaging.celebros.com</host>
-                <sitekey>MagCE230</sitekey>
+                <sitekey>mageinclude</sitekey>
                 <adddiv>1</adddiv>
                 <addscripts>1</addscripts>
                 <scriptslocation>body</scriptslocation>
@@ -27,13 +27,12 @@
                 <nav_to_search>1</nav_to_search>
             </nav_to_search_settings>
             <advanced>
-                <js_framework>jquery</js_framework>
+                <js_framework>angular</js_framework>
                 <scripts_path>uitemplate/Scripts</scripts_path>
                 <client_config_path>uitemplatev5/Clients</client_config_path>
                 <client_config_js_filename>ClientConfig.js</client_config_js_filename>
                 <angular_client_config_path>UITemplateV6/Clients</angular_client_config_path>
                 <angular_client_config_js_filename>CelScripts.js</angular_client_config_js_filename>
-                <js_framework>jquery</js_framework>
             </advanced>
         </conversionpro>
     </default>
