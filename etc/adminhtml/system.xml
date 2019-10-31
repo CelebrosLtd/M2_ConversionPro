@@ -39,35 +39,6 @@
                         <field id="*/*/enabled">1</field>
                     </depends>
                 </field>
-                <field id="adddiv" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="1">
-                    <label>Add Div</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <depends>
-                        <field id="*/*/enabled">1</field>
-                    </depends>
-                </field>
-                <field id="addscripts" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1">
-                    <label>Add Scripts</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <depends>
-                        <field id="*/*/enabled">1</field>
-                    </depends>
-                </field>
-                <field id="scriptslocation" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1">
-                    <label>Scripts Location</label>
-                    <source_model>Celebros\ConversionPro\Model\Config\Source\DomLocations</source_model>
-                    <depends>
-                        <field id="*/*/enabled">1</field>
-                        <field id="*/*/addscripts">1</field>
-                    </depends>
-                </field>
-                <field id="hidecontent" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="1">
-                    <label>Hide Content</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <depends>
-                        <field id="*/*/enabled">1</field>
-                    </depends>
-                </field>
             </group>
             <group id="nav_to_search_settings" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
                 <label>Navigation to Search Settings</label>
@@ -78,6 +49,9 @@
                 <field id="nav_to_search_enable_blacklist" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
                     <label>Enable Blacklisting</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/nav_to_search">1</field>
+                    </depends>
                 </field>
                 <field id="nav_to_search_blacklist" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
                     <label>Blacklisted Categories</label>
@@ -89,44 +63,67 @@
             </group>
             <group id="advanced" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
                 <label>Advanced</label>
-                <field id="js_framework" translate="label comment" type="select" sortOrder="05" showInDefault="1" showInWebsite="0" showInStore="1">
+                <comment><![CDATA[<strong style="color:red">Warning!</strong> If any of these parameters values are changed then the search and navigation pages may not work properly.]]></comment>
+                <field id="js_framework" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
                     <label>JS Framework</label>
                     <source_model>Celebros\ConversionPro\Model\Config\Source\JSFramework</source_model>
                 </field>
-                <!--<field id="scripts_path" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">
-                    <label>Script Path</label>
-                    <comment><![CDATA[e.g. uitemplate/Scripts]]></comment>
-                </field>-->
-                <field id="client_config_path" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
+
+                <field id="client_config_path" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
                     <label>Client Config Script Path</label>
                     <comment><![CDATA[e.g. uitemplate/Clients]]></comment>
                     <depends>
                         <field id="*/*/js_framework">jquery</field>
                     </depends>                    
                 </field>
-                <field id="client_config_js_filename" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
+                <field id="client_config_js_filename" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
                     <label>Client Config File Name</label>
                     <comment><![CDATA[e.g. ClientConfig.min.js]]></comment>
                     <depends>
                         <field id="*/*/js_framework">jquery</field>
                     </depends> 
                 </field>
-                <field id="angular_client_config_path" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1">
+                <field id="angular_client_config_path" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
                     <label>Client Config Script Path</label>
                     <comment><![CDATA[e.g. UITemplateV6/Clients]]></comment>
                     <depends>
                         <field id="*/*/js_framework">angular</field>
                     </depends> 
                 </field>
-                <field id="angular_client_config_js_filename" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1">
+                <field id="angular_client_config_js_filename" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
                     <label>Client Config File Name</label>
                     <comment><![CDATA[e.g. CelScripts.js]]></comment>
                     <depends>
                         <field id="*/*/js_framework">angular</field>
                     </depends> 
                 </field>
+                <field id="adddiv" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
+                    <label>Add Div</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="addscripts" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
+                    <label>Add Scripts</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="scriptslocation" translate="label comment" type="select" sortOrder="55" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
+                    <label>Scripts Location</label>
+                    <source_model>Celebros\ConversionPro\Model\Config\Source\DomLocations</source_model>
+                    <depends>
+                        <field id="*/*/addscripts">1</field>
+                    </depends>
+                </field>
+                <field id="hidecontent" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
+                    <label>Hide Content</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
             </group>
-            <group id="about" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1">
+            <group id="about" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1">
                 <label>About</label>
                 <hide_in_single_store_mode>0</hide_in_single_store_mode>
                 <field id="info" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">

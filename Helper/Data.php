@@ -20,10 +20,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_ENABLED = 'conversionpro/general_settings/enabled';
     const XML_PATH_HOST = 'conversionpro/general_settings/host';
     const XML_PATH_SITE_KEY = 'conversionpro/general_settings/sitekey';
-    const XML_PATH_ADD_DIV = 'conversionpro/general_settings/adddiv';
-    const XML_PATH_ADD_SCRIPTS = 'conversionpro/general_settings/addscripts';
-    const XML_PATH_SCRIPTS_LOCATION = 'conversionpro/general_settings/scriptslocation';
-    const XML_PATH_HIDE_CONTENT = 'conversionpro/general_settings/hidecontent';
     const XML_PATH_NAV_TO_SEARCH = 'conversionpro/nav_to_search_settings/nav_to_search';
     const XML_PATH_NAV_TO_SEARCH_ENABLE_BLACKLIST = 'conversionpro/nav_to_search_settings/nav_to_search_enable_blacklist';
     const XML_PATH_NAV_TO_SEARCH_BLACKLIST = 'conversionpro/nav_to_search_settings/nav_to_search_blacklist';
@@ -31,6 +27,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_CLIENT_CONFIG_PATH = 'conversionpro/advanced/client_config_path';
     const XML_PATH_CLIENT_CONFIG_FILENAME = 'conversionpro/advanced/client_config_js_filename';
     const XML_PATH_JS_FRAMEWORK = 'conversionpro/advanced/js_framework';
+    const XML_PATH_ADD_DIV = 'conversionpro/advanced/adddiv';
+    const XML_PATH_ADD_SCRIPTS = 'conversionpro/advanced/addscripts';
+    const XML_PATH_SCRIPTS_LOCATION = 'conversionpro/advanced/scriptslocation';
+    const XML_PATH_HIDE_CONTENT = 'conversionpro/advanced/hidecontent';
     
     const ANGULAR_SETTING_PREFIX = 'angular_';
     
