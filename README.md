@@ -18,4 +18,4 @@ Celebros ConversionPro Include
 
 1.1.2 - php require version changed
 
-1.1.3 - 1.1.8 - tech fix
+1.1.3 - 1.1.9 - tech fix
