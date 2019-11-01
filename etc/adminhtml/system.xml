@@ -109,7 +109,7 @@
                     <depends>
                         <field id="*/*/enabled">1</field>
                     </depends>
-                </field>
+                </field>-->
                 <field id="scriptslocation" translate="label comment" type="select" sortOrder="55" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
                     <label>Scripts Location</label>
                     <source_model>Celebros\ConversionPro\Model\Config\Source\DomLocations</source_model>
@@ -120,7 +120,7 @@
                 <field id="hidecontent" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
                     <label>Hide Content</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>-->
+                </field>
             </group>
             <group id="about" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1">
                 <label>About</label>
