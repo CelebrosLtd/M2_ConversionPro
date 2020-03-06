@@ -1,4 +1,6 @@
-Celebros ConversionPro Include
+## Celebros ConversionPro Include
+
+This module is for use with Magento stores where the search user interface is hosted on Celebros. For stores that handle the display of search results with the theme on the site, refer to [M2 ConversionPro Embedded](https://github.com/devbelvg/M2_ConversionPro_Embedded).
 
 ------------------------------
 
