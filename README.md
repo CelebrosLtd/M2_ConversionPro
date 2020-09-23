@@ -19,3 +19,5 @@ Celebros ConversionPro Include
 1.1.2 - php require version changed
 
 1.1.3 - 1.1.11 - tech fix
+
+1.1.12 - default setting values (search and nav2search) have been changed; php 7.4.x has been added to require dependency

@@ -15,12 +15,12 @@
     <default>
         <conversionpro>
             <general_settings>
-                <enabled>1</enabled>
+                <enabled>0</enabled>
                 <host>uistaging.celebros.com</host>
                 <sitekey>mageinclude</sitekey>
             </general_settings>
             <nav_to_search_settings>
-                <nav_to_search>1</nav_to_search>
+                <nav_to_search>0</nav_to_search>
             </nav_to_search_settings>
             <advanced>
                 <js_framework>angular</js_framework>
