@@ -32,6 +32,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_SCRIPTS_LOCATION = 'conversionpro/advanced/scriptslocation';
     const XML_PATH_HIDE_CONTENT = 'conversionpro/advanced/hidecontent';
     
+    const XML_PATH_ANALYTICS_HOST = 'conversionpro/general_settings/analytics';
+    
     const ANGULAR_SETTING_PREFIX = 'angular_';
     
     const PRODUCT_LIST_CONTAINER_ID = 'celUITDiv';

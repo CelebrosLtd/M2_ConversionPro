@@ -17,7 +17,7 @@
             <general_settings>
                 <enabled>0</enabled>
                 <host>uistaging.celebros.com</host>
-                <sitekey>mageinclude</sitekey>
+                <sitekey>magedemo</sitekey>
             </general_settings>
             <nav_to_search_settings>
                 <nav_to_search>0</nav_to_search>
