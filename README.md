@@ -23,3 +23,5 @@ Celebros ConversionPro Include
 1.1.12 - default setting values (search and nav2search) have been changed; php 7.4.x has been added to require dependency
 
 1.1.13 - popular search terms queries removed for celebros search engine
+
+1.2.0 - controller for real time getting prices has been added

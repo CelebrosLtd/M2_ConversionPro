@@ -11,10 +11,10 @@
  * @category    Celebros
  * @package     Celebros_ConversionPro
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Celebros_ConversionPro" setup_version="1.2.0">
-        <sequence>
-            <module name="Celebros_Main"/>
-        </sequence>
-    </module>    
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="celinclude" frontName="celinclude">
+            <module name="Celebros_ConversionPro" />
+        </route>
+    </router>
 </config>
