@@ -25,3 +25,5 @@ Celebros ConversionPro Include
 1.1.13 - popular search terms queries removed for celebros search engine
 
 1.2.0 - controller for real time getting prices has been added
+
+1.2.1 - tech fixes and refactoring

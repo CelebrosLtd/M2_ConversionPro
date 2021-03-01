@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Celebros
  *
@@ -11,6 +12,7 @@
  * @category    Celebros
  * @package     Celebros_ConversionPro
  */
+
 namespace Celebros\ConversionPro\Block;
 
 use Magento\CatalogSearch\Helper\Data;
@@ -27,6 +29,12 @@ class Search extends Template
      */
     protected $catalogSearchData;
 
+    /**
+     * @param Context $context
+     * @param Data $catalogSearchData
+     * @param array $data
+     * @return void
+     */
     public function __construct(
         Context $context,
         Data $catalogSearchData,

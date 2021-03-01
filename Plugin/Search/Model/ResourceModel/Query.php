@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Celebros
  *
@@ -11,6 +12,7 @@
  * @category    Celebros
  * @package     Celebros_ConversionPro
  */
+
 namespace Celebros\ConversionPro\Plugin\Search\Model\ResourceModel;
 
 use Celebros\ConversionPro\Helper\Data as Helper;
@@ -29,7 +31,7 @@ class Query
     ) {
         $this->helper = $helper;
     }
-    
+
     /**
      * @param MagentoResourceModelQuery $resourceQuery
      * @param callable $proceed
@@ -45,9 +47,8 @@ class Query
     ) {
         if ($this->helper->isEnabled()) {
             return $resourceQuery;
-        } 
-        
+        }
+
         return $proceed($object, $value);
     }
-
 }

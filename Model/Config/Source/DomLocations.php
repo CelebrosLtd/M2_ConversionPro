@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Celebros
  *
@@ -11,6 +12,7 @@
  * @category    Celebros
  * @package     Celebros_ConversionPro
  */
+
 namespace Celebros\ConversionPro\Model\Config\Source;
 
 class DomLocations implements \Magento\Framework\Option\ArrayInterface
@@ -19,17 +21,17 @@ class DomLocations implements \Magento\Framework\Option\ArrayInterface
      * @var \Magento\Framework\App\RequestInterface
      */
     public $request;
-    
+
     /**
      * @var \Magento\Catalog\Api\CategoryRepositoryInterface
      */
     public $category;
-    
+
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     public $storeManager;
-    
+
     /**
      * @var array
      */
@@ -37,13 +39,12 @@ class DomLocations implements \Magento\Framework\Option\ArrayInterface
         'head' => 'Head',
         'body' => 'Body (RequireJS)'
     ];
-    
-    
+
     /**
      * @var \Magento\Catalog\Model\CategoryFactory
      */
     public $categoryFactory;
-    
+
     public function __construct(
         \Magento\Framework\App\RequestInterface $request,
         \Magento\Catalog\Model\CategoryFactory $category,
@@ -53,17 +54,17 @@ class DomLocations implements \Magento\Framework\Option\ArrayInterface
         $this->category = $category;
         $this->storeManager = $storeManager;
     }
-    
+
     public function toOptionArray($isMultiselect = false, $req = false)
     {
         $result = $this->_toOptionArray();
         if (!$isMultiselect && $req) {
             array_unshift($result, ['value' => '', 'label' => __('--Please Select--')]);
         }
-        
+
         return $result;
     }
-    
+
     protected function _toOptionArray()
     {
         if (null === $this->options) {
@@ -75,7 +76,7 @@ class DomLocations implements \Magento\Framework\Option\ArrayInterface
                 ];
             }
         }
-        
+
         return $this->options;
     }
 }

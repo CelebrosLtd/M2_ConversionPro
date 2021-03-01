@@ -96,24 +96,6 @@
                         <field id="*/*/js_framework">angular</field>
                     </depends> 
                 </field>
-                <!--<field id="adddiv" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
-                    <label>Add Div</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <depends>
-                        <field id="*/*/enabled">1</field>
-                    </depends>
-                </field>
-                <field id="addscripts" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
-                    <label>Add Scripts</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <depends>
-                        <field id="*/*/enabled">1</field>
-                    </depends>
-                </field>
-                <field id="scriptslocation" translate="label comment" type="select" sortOrder="55" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
-                    <label>Scripts Location</label>
-                    <source_model>Celebros\ConversionPro\Model\Config\Source\DomLocations</source_model>
-                </field>-->
                 <field id="hidecontent" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
                     <label>Hide Content</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>

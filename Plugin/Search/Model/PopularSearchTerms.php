@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Celebros
  *
@@ -11,6 +12,7 @@
  * @category    Celebros
  * @package     Celebros_ConversionPro
  */
+
 namespace Celebros\ConversionPro\Plugin\Search\Model;
 
 use Celebros\ConversionPro\Helper\Data as Helper;
@@ -27,7 +29,7 @@ class PopularSearchTerms
     ) {
         $this->helper = $helper;
     }
-    
+
     /**
      * @param \Magento\Search\Model\PopularSearchTerms $terms
      * $param callable $proceed
@@ -43,7 +45,7 @@ class PopularSearchTerms
     ) {
         if ($this->helper->isEnabled()) {
             return true;
-        }       
+        }
 
         return $proceed($term, $storeId);
     }

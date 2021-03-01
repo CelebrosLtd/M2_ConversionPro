@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Celebros
  *
@@ -11,6 +12,7 @@
  * @category    Celebros
  * @package     Celebros_ConversionPro
  */
+
 namespace Celebros\ConversionPro\Model\Config\Source;
 
 class JSFramework implements \Magento\Framework\Option\ArrayInterface
@@ -19,7 +21,7 @@ class JSFramework implements \Magento\Framework\Option\ArrayInterface
      * @var \Magento\Framework\App\RequestInterface
      */
     public $request;
-    
+
     /**
      * @var array
      */
@@ -27,23 +29,23 @@ class JSFramework implements \Magento\Framework\Option\ArrayInterface
         'jquery' => 'jQuery',
         'angular' => 'Angular JS'
     ];
-    
+
     public function __construct(
         \Magento\Framework\App\RequestInterface $request
     ) {
         $this->request = $request;
     }
-    
+
     public function toOptionArray($isMultiselect = false, $req = false)
     {
         $result = $this->_toOptionArray();
         if (!$isMultiselect && $req) {
             array_unshift($result, ['value' => '', 'label' => __('--Please Select--')]);
         }
-        
+
         return $result;
     }
-    
+
     protected function _toOptionArray()
     {
         if (null === $this->options) {
@@ -55,7 +57,7 @@ class JSFramework implements \Magento\Framework\Option\ArrayInterface
                 ];
             }
         }
-        
+
         return $this->options;
     }
 }
