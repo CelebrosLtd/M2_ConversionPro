@@ -8,7 +8,7 @@
  * Do not edit or add to this file if you wish correct extension functionality.
  * If you wish to customize it, please contact Celebros.
  *
- ******************************************************************************
+ * *****************************************************************************
  * @category    Celebros
  * @package     Celebros_ConversionPro
  */
@@ -42,8 +42,7 @@ class OneColumnLayout
 
     public function afterExecute($controller, $result)
     {
-        if (
-            $result instanceof \Magento\Framework\View\Result\Page
+        if ($result instanceof \Magento\Framework\View\Result\Page
             && $this->helper->isEnabledOnFrontend()
             && $this->helper->getNavToSearch()
         ) {

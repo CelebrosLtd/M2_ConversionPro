@@ -1,6 +1,6 @@
-<?php $helper = $this->helper('Celebros\ConversionPro\Helper\Data') ?>
+<?php $helper = $this->helper(\Celebros\ConversionPro\Helper\Data::class) ?>
 <?php if ($helper->getAddScripts() && $helper->getScriptsLocation() == 'head'): ?>
-<?php foreach ($helper->getExternalJsUrls() as $url) : ?>
-<script type="text/javascript" src="<?php echo $block->escapeJsQuote($url) ?>"></script>
+    <?php foreach ($helper->getExternalJsUrls() as $url): ?>
+<script type="text/javascript" src="<?= $block->escapeJsQuote($url) ?>"></script>
 <?php endforeach ?>
 <?php endif ?>

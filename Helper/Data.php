@@ -8,7 +8,7 @@
  * Do not edit or add to this file if you wish correct extension functionality.
  * If you wish to customize it, please contact Celebros.
  *
- ******************************************************************************
+ * *****************************************************************************
  * @category    Celebros
  * @package     Celebros_ConversionPro
  */
@@ -319,7 +319,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function getBaseUrl(): string
     {
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+        $storeManager = $objectManager->get(\Magento\Store\Model\StoreManagerInterface::class);
         return $storeManager->getStore()->getBaseUrl();
     }
 }

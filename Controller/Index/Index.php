@@ -1,20 +1,16 @@
 <?php
 
 /**
- * BelVG LLC.
+ * Celebros
  *
- * NOTICE OF LICENSE
+ * DISCLAIMER
  *
- * This source file is subject to the EULA
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ * Do not edit or add to this file if you wish correct extension functionality.
+ * If you wish to customize it, please contact Celebros.
  *
- ********************************************************************
- * @category   BelVG
- * @package    BelVG_Pricelist
- * @copyright  Copyright (c) 2010 - 2015 BelVG LLC. (http://www.belvg.com)
- * @license    http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
+ * *****************************************************************************
+ * @category    Celebros
+ * @package     Celebros_ConversionPro
  */
 
 namespace Celebros\ConversionPro\Controller\Index;
@@ -22,10 +18,12 @@ namespace Celebros\ConversionPro\Controller\Index;
 use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
+use Magento\Framework\App\Action\Action;
 
-class Index extends \Magento\Framework\App\Action\Action implements CsrfAwareActionInterface
+class Index extends Action implements CsrfAwareActionInterface
 {
     public const SKUS_VAR = 'skus';
+    public const CALLBACK_VAR = 'callback';
 
     /**
      * @param RequestInterface $request
@@ -48,20 +46,28 @@ class Index extends \Magento\Framework\App\Action\Action implements CsrfAwareAct
     }
 
     /**
-     * @var \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
+     * @var \Magento\Framework\Controller\Result\JsonFactory
      */
     protected $resultJsonFactory;
 
     /**
+     * @var \Magento\Framework\Controller\Result
+     */
+    protected $rawResultFactory;
+
+    /**
      * @param \Magento\Framework\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
+     * @param \Magento\Framework\Controller\Result $rawResultFactory
      * @return void
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
+        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
+        \Magento\Framework\Controller\Result\RawFactory $rawResultFactory
     ) {
         $this->resultJsonFactory = $resultJsonFactory;
+        $this->rawResultFactory = $rawResultFactory;
         parent::__construct($context);
     }
 
@@ -74,37 +80,20 @@ class Index extends \Magento\Framework\App\Action\Action implements CsrfAwareAct
         return $skus;
     }
 
-    /**
-     * @param string $subject
-     * @return bool
-     */
-    public function isValidCallback(string $subject): bool
-    {
-        $identifier_syntax = '/^[$_\p{L}][$_\p{L}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*+$/u';
-        $reserved_words = array('break', 'do', 'instanceof', 'typeof', 'case',
-          'else', 'new', 'var', 'catch', 'finally', 'return', 'void', 'continue',
-          'for', 'switch', 'while', 'debugger', 'function', 'this', 'with',
-          'default', 'if', 'throw', 'delete', 'in', 'try', 'class', 'enum',
-          'extends', 'super', 'const', 'export', 'import', 'implements', 'let',
-          'private', 'public', 'yield', 'interface', 'package', 'protected',
-          'static', 'null', 'true', 'false');
-
-        return preg_match($identifier_syntax, $subject)
-            && !in_array(mb_strtolower($subject, 'UTF-8'), $reserved_words);
-    }
-
     public function execute()
     {
         $collection = $this->_objectManager
-            ->create('\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory')
+            ->create(\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory::class)
             ->create();
         $collection->setFlag('has_stock_status_filter', true);
-        $collection->addFieldToFilter('sku', array('in' => $this->getSkus()))
+        $collection->addFieldToFilter('sku', ['in' => $this->getSkus()])
             ->addPriceData();
 
-        if (isset($_GET['callback']) /*&& $this->isValidCallback($_GET['callback'])*/) {
-            header('content-type: application/javascript; charset=utf-8');
-            exit("{$_GET['callback']}(" . json_encode($this->preparePrices($collection)) . ")");
+        if ($callback = $this->getRequest()->getParam(self::CALLBACK_VAR)) {
+            $result = $this->rawResultFactory->create();
+            $result->setHeader('Content-Type', 'application/javascript; charset=utf-8');
+            $result->setContents("{$callback}(" . json_encode($this->preparePrices($collection)) . ")");
+            return $result;
         }
 
         return $this->resultJsonFactory
