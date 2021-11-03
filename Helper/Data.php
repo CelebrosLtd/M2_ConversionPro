@@ -33,6 +33,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public const XML_PATH_ADD_SCRIPTS = 'conversionpro/advanced/addscripts';
     public const XML_PATH_SCRIPTS_LOCATION = 'conversionpro/advanced/scriptslocation';
     public const XML_PATH_HIDE_CONTENT = 'conversionpro/advanced/hidecontent';
+    public const XML_PATH_ADD_TO_CART = 'conversionpro/advanced/addtocart';
     public const XML_PATH_ANALYTICS_HOST = 'conversionpro/general_settings/analytics';
 
     public const ANGULAR_SETTING_PREFIX = 'angular_';
@@ -205,6 +206,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             ScopeInterface::SCOPE_STORE,
             $store
         );
+    }
+
+    /**
+     * @param int $store
+     * @return bool
+     */
+    public function isApplyAddToCart($store = null): bool
+    {
+        return $this->scopeConfig->isSetFlag(
+            self::XML_PATH_ADD_TO_CART,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        ) && $this->isEnabled($store);
     }
 
     /**

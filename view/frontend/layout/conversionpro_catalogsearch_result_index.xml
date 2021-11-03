@@ -20,5 +20,8 @@
         <referenceContainer name="content">
             <block class="Celebros\ConversionPro\Block\Search" name="conversionpro.search.result" template="Celebros_ConversionPro::search/result.phtml" />
         </referenceContainer>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="conversionpro.js" after="-" template="Celebros_ConversionPro::js.phtml" />
+        </referenceContainer>
     </body>
 </page>

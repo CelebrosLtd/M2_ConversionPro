@@ -33,6 +33,7 @@
                 <addscripts>1</addscripts>
                 <scriptslocation>body</scriptslocation>
                 <hidecontent>1</hidecontent>
+                <addtocart>0</addtocart>
             </advanced>
         </conversionpro>
     </default>

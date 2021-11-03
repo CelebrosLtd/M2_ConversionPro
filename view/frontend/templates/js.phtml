@@ -1,0 +1,17 @@
+<?php $helper = $this->helper(\Celebros\ConversionPro\Helper\Data::class); ?>
+<?php if ($helper->isApplyAddToCart()): ?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "conversionpro/addtocart": {
+            "selectors": {
+                "addtocartform": "[data-role='tocart-form']"
+            },
+            "events": {
+                "contentready": "celebros:ready"
+            }
+        }
+    }
+}
+</script>
+<?php endif; ?>

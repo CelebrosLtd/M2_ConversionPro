@@ -100,6 +100,10 @@
                     <label>Hide Content</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="addtocart" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="1" canRestore="1">
+                    <label>Apply Native Catalog Add To Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
             </group>
             <group id="about" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="1">
                 <label>About</label>

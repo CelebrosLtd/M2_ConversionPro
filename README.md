@@ -27,3 +27,6 @@ Celebros ConversionPro Include
 1.2.0 - controller for real time getting prices has been added
 
 1.2.1 - tech fixes and refactoring
+
+1.3.0 - native magento add to cart has been added
+
