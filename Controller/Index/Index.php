@@ -72,7 +72,7 @@ class Index extends Action implements CsrfAwareActionInterface
      */
     public function getSkus(): array
     {
-        $skus = explode(',', $this->getRequest()->getParam(self::SKUS_VAR));
+        $skus = explode(',', (string)$this->getRequest()->getParam(self::SKUS_VAR));
         return $skus;
     }
 
