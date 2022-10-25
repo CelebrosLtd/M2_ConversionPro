@@ -1,24 +1,20 @@
 <?php
 
-/**
- * Celebros
+/*
+ * Celebros (C) 2022. All Rights Reserved.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish correct extension functionality.
  * If you wish to customize it, please contact Celebros.
- *
- * *****************************************************************************
- * @category    Celebros
- * @package     Celebros_ConversionPro
  */
 
 namespace Celebros\ConversionPro\Block\System\Config\Form\Field;
 
+use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Magento\Framework\Setup\ModuleContextInterface;
 
-class Info extends \Magento\Config\Block\System\Config\Form\Field
+class Info extends Field
 {
     public const MODULE_NAME = 'Celebros_ConversionPro';
     protected $_moduleDb;
@@ -29,7 +25,7 @@ class Info extends \Magento\Config\Block\System\Config\Form\Field
         $this->_moduleDb = $moduleDb;
     }
 
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    public function render(AbstractElement $element)
     {
         $id = $element->getHtmlId();
         $html = '<tr id="row_' . $id . '">';
