@@ -14,12 +14,16 @@ namespace Celebros\ConversionPro\Plugin\Search\Model\ResourceModel;
 use Celebros\ConversionPro\Helper\Data as Helper;
 use Magento\Search\Model\ResourceModel\Query as MagentoResourceModelQuery;
 use Magento\Framework\Model\AbstractModel;
-use Magento\Search\Model\Query as QueryModel;
 
 class Query
 {
     /**
-     * @param \Celebros\ConversionPro\Helper\Data $helper
+     * @var Helper
+     */
+    private $helper;
+
+    /**
+     * @param Helper $helper
      * @return void
      */
     public function __construct(
