@@ -254,7 +254,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             ScopeInterface::SCOPE_STORE,
             $store
         );
-        $value = empty($value) ? [] : explode(',', $value);
+        $value = empty($value) ? [] : explode(',', (string) $value);
         return $value;
     }
 
