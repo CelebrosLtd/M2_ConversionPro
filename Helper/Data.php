@@ -1,7 +1,7 @@
 <?php
 
-/*
- * Celebros (C) 2022. All Rights Reserved.
+/**
+ * Celebros (C) 2023. All Rights Reserved.
  *
  * DISCLAIMER
  *
@@ -254,7 +254,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             ScopeInterface::SCOPE_STORE,
             $store
         );
-        $value = empty($value) ? [] : explode(',', $value);
+        $value = empty($value) ? [] : explode(',', (string) $value);
         return $value;
     }
 

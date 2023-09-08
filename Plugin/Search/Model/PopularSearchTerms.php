@@ -1,7 +1,7 @@
 <?php
 
-/*
- * Celebros (C) 2022. All Rights Reserved.
+/**
+ * Celebros (C) 2023. All Rights Reserved.
  *
  * DISCLAIMER
  *
@@ -17,7 +17,12 @@ use Magento\Search\Model\PopularSearchTerms as MagentoPopularSearchTerms;
 class PopularSearchTerms
 {
     /**
-     * @param \Celebros\ConversionPro\Helper\Data $helper
+     * @var Helper
+     */
+    private $helper;
+
+    /**
+     * @param Helper $helper
      * @return void
      */
     public function __construct(
@@ -27,10 +32,10 @@ class PopularSearchTerms
     }
 
     /**
-     * @param \Magento\Search\Model\PopularSearchTerms $terms
-     * $param callable $proceed
-     * $param string $term
-     * $param int $storeId
+     * @param MagentoPopularSearchTerms $terms
+     * @param callable $proceed
+     * @param string $term
+     * @param int $storeId
      * @return bool
      */
     public function aroundIsCacheable(

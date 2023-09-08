@@ -1,7 +1,7 @@
 <?php
 
-/*
- * Celebros (C) 2022. All Rights Reserved.
+/**
+ * Celebros (C) 2023. All Rights Reserved.
  *
  * DISCLAIMER
  *
@@ -20,6 +20,39 @@ class Index extends Action implements CsrfAwareActionInterface
 {
     public const SKUS_VAR = 'skus';
     public const CALLBACK_VAR = 'callback';
+
+    /**
+     * @var \Magento\Framework\Controller\Result\JsonFactory
+     */
+    protected $resultJsonFactory;
+
+    /**
+     * @var \Magento\Framework\Controller\Result
+     */
+    protected $rawResultFactory;
+
+    /**
+     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     */
+    protected $productCollectionFactory;
+
+    /**
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
+     * @param \Magento\Framework\Controller\Result\RawFactory $rawResultFactory
+     * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
+     */
+    public function __construct(
+        \Magento\Framework\App\Action\Context $context,
+        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
+        \Magento\Framework\Controller\Result\RawFactory $rawResultFactory,
+        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
+    ) {
+        $this->resultJsonFactory = $resultJsonFactory;
+        $this->rawResultFactory = $rawResultFactory;
+        $this->productCollectionFactory = $productCollectionFactory;
+        parent::__construct($context);
+    }
 
     /**
      * @param RequestInterface $request
@@ -42,32 +75,6 @@ class Index extends Action implements CsrfAwareActionInterface
     }
 
     /**
-     * @var \Magento\Framework\Controller\Result\JsonFactory
-     */
-    protected $resultJsonFactory;
-
-    /**
-     * @var \Magento\Framework\Controller\Result
-     */
-    protected $rawResultFactory;
-
-    /**
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
-     * @param \Magento\Framework\Controller\Result $rawResultFactory
-     * @return void
-     */
-    public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
-        \Magento\Framework\Controller\Result\RawFactory $rawResultFactory
-    ) {
-        $this->resultJsonFactory = $resultJsonFactory;
-        $this->rawResultFactory = $rawResultFactory;
-        parent::__construct($context);
-    }
-
-    /**
      * @return array
      */
     public function getSkus(): array
@@ -76,11 +83,12 @@ class Index extends Action implements CsrfAwareActionInterface
         return $skus;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function execute()
     {
-        $collection = $this->_objectManager
-            ->create(\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory::class)
-            ->create();
+        $collection = $this->productCollectionFactory->create();
         $collection->setFlag('has_stock_status_filter', true);
         $collection->addFieldToFilter('sku', ['in' => $this->getSkus()])
             ->addPriceData();
@@ -99,6 +107,10 @@ class Index extends Action implements CsrfAwareActionInterface
             );
     }
 
+    /**
+     * @param \Magento\Catalog\Model\ResourceModel\Product\Collection $products
+     * @return array
+     */
     public function preparePrices($products)
     {
         $result = [];
