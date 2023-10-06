@@ -90,9 +90,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         $protocol = $this->_getRequest()->isSecure() ? 'https' : 'http';
         $angular = $protocol . '://'
-            . 'ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js';
+            . 'ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js';
         $angularRoute = $protocol . '://'
-            . 'ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.min.js';
+            . 'ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js';
         $clientConfigUrl = $protocol . '://' . implode('/', [
             $this->getHost(),
             $this->getClientConfigPath(),
